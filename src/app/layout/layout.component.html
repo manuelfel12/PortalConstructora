@@ -1,0 +1,47 @@
+<div (window:resize)="onResize()">
+
+
+   
+    <!-- top navbar-->
+
+    <div class="container-fluid">
+          
+  
+      <app-header></app-header>
+    
+    </div>
+    <!-- sidebar-->
+
+
+
+
+    <!-- <div class="row">
+        <div class="col-md-2" style="background-color: greenyellow;">
+          <app-sidebar></app-sidebar>
+        </div>
+        <div class="colmd-10" style="background-color:yellow;">
+          <router-outlet></router-outlet>
+        </div>
+      </div> -->
+
+
+        <div class="container-fluid">
+          
+          <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-12 col-xs-12" style="background-color:rgba(0, 0, 0, 0.678);">
+              <app-sidebar></app-sidebar>
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-12 col-xs-12" style="background-color:rgb(126, 192, 216);">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+    <!-- Page footer-->
+    <!-- <app-footer *ngIf="bIsLoggedIn"></app-footer> -->
+  
+</div>

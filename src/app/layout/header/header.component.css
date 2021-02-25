@@ -1,0 +1,33 @@
+@media screen and (max-width: 1920px) {
+  div.companyLogo img {   
+   width: 150px;
+  }
+}
+
+@media screen and (max-width: 1440px) {
+  div.companyLogo img {
+    width: 120px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  div.companyLogo img {
+    /* background-color: chartreuse; */
+    width: 120px;
+  }
+}
+
+.dropdown {list-style: none; display: inline-block;}
+.dropdown .nav-link {color:#fff; text-decoration: none;}
+.dropdown .dropdown-menu a{color: #000; text-decoration: none;}
+.dropdown .btn {background: #808080; color:#fff;}
+.dropdown .btn:hover {background: #56baed; color:#000;}
+.dropdown .btn:active {background: #56baed; color:#000;}
+.dropdown .btn:focus {background: #56baed; color:#000;}
+.dropdown-menu .dropdown-item {display: inline-block; width: 100%; padding: 10px 5px;}
+.container .dropdown .dropdown-menu a:hover
+{
+  color: black;
+  background-color: #56baed;
+  border-color: #fff;
+}

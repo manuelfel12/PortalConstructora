@@ -2,21 +2,23 @@
 
   <nav class="nav-list">
 
-   
+
 
     <ul class="ul-list">
 
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="[elemento.RutaUrl]" *ngIf="elemento.Funcionalidades.length == 0">{{ elemento.Modulo }}</a>
+        <a class="nav-link" [routerLink]="[elemento.RutaUrl]"
+          *ngIf="elemento.Funcionalidades.length == 0">{{ elemento.Modulo }}</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" data-target="#submenu" *ngIf="elemento.Funcionalidades.length != 0" (click)="expandDynamicMenu(elemento)">{{ elemento.Modulo}}</a>
-        <div *ngIf="elemento.expanded">
-          <ul id="submenu" class="nav-list collapse" *ngFor="let item of elemento.Funcionalidades">
-            <li><a [routerLink]="[elemento.RutaUrl, item.UrlFuncionalidad]">{{ item.NombreFuncionalidad }}</a></li>
-          </ul>
-        </div>
+        <a class="nav-link" data-toggle="collapse" [attr.data-target]="'#details-'+ elemento.IdModulo"
+          *ngIf="elemento.Funcionalidades.length != 0">{{ elemento.Modulo}}</a>
+
+        <ul id="details-{{elemento.IdModulo}}" class="nav-list collapse" *ngFor="let item of elemento.Funcionalidades">
+          <li><a [routerLink]="[elemento.RutaUrl, item.UrlFuncionalidad]">{{ item.NombreFuncionalidad }}</a></li>
+        </ul>
+
       </li>
 
     </ul>

@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
+
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing-module';
 import { LayoutModule } from './layout/layout.module';
 import { LoginComponent } from './modules/authentication/login/login.component';
-import { MsalModule } from '@azure/msal-angular';
 import { Interceptor } from './core/interceptors/interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ConsultasIQGuard } from './core/guards/consultas-iq.guard';
+import { FormsModule } from '@angular/forms';
+import { MsalModule } from '@azure/msal-angular';
+import { DataTablesModule } from 'angular-datatables';
 
 @NgModule({
   declarations: [
@@ -17,9 +20,11 @@ import { ConsultasIQGuard } from './core/guards/consultas-iq.guard';
   ],
   imports: [
     BrowserModule,
+    DataTablesModule,
     HttpClientModule,
     LayoutModule,
     AppRoutingModule,
+    FormsModule,
     MsalModule.forRoot({
       auth: {
         // clientId: "cb0ddcd3-1cd3-4cf2-b4bf-334b61621b67",
@@ -37,7 +42,7 @@ import { ConsultasIQGuard } from './core/guards/consultas-iq.guard';
       consentScopes: [
         "user.read", "openid", "profile"
       ]
-    })
+    })   
   ],
   providers: [ConsultasIQGuard, { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }],
   bootstrap: [AppComponent]

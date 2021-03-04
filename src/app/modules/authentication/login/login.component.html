@@ -1,39 +1,37 @@
 <div class="wrapper fadeInDown">
-    <div id="formContent">
-        <!-- Tabs Titles -->
-        <!-- <app-header></app-header> -->
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <!-- <app-header></app-header> -->
 
-        <!-- Icon -->
-        <div class="fadeIn first">
-            <img class="logoEntidad" src="../../../../assets/img/logoEntidad.png" id="icon" alt="User Icon" />
-        </div>
-
-        <!-- Login Form -->
-
-        <!-- <span class="text-danger">El correo es obligatorio</span> -->
-        <div class="wrap-input100 m-b-16">
-            <input class="input100" type="text" name="username" autocomplete="off" placeholder="Usuario" autofocus>
-
-            <span class="focus-input100"></span>
-        </div>
-
-        <div class="wrap-input100 m-b-16">
-            <input class="input100" type="text" name="username" autocomplete="off" placeholder="Contraseña">
-
-            <span class="focus-input100"></span>
-        </div>
-        <hr>
-
-
-        <input type="submit" class="fadeIn fourth" (click)="onLogin()" value="Ingresar">
-
-
-        <!-- Remind Passowrd -->
-        <div id="formFooter">
-            <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
-        </div>
-
-
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img class="logoEntidad" src="../../../../assets/img/logoEntidad.png" id="icon" alt="User Icon" />
     </div>
+
+    <!-- Login Form -->
+
+    <!-- <span class="text-danger">El correo es obligatorio</span> -->
+    <form #formLogin="ngForm" (ngSubmit)="onSubmit(formLogin)" novalidate autocomplete="off">
+      <div class="wrap-input100 m-b-16">
+        <input class="input100" type="text" name="userName" [(ngModel)]="user.userName" placeholder="Usuario" autofocus>
+        <span class="focus-input100"></span>
+      </div>
+
+      <div class="wrap-input100 m-b-16">
+        <input class="input100" type="password" name="passowrd" [(ngModel)]="user.password" placeholder="Contraseña">
+        <span class="focus-input100"></span>
+      </div>
+      <hr>
+
+      <input type="submit" class="fadeIn fourth" value="Ingresar">
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <!-- <a class="underlineHover" href="#">Forgot Password?</a> -->
+    </div>
+
+
+  </div>
 </div>
 <!-- <app-footer class="fadeInDown"></app-footer> -->

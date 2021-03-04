@@ -1,28 +1,28 @@
 .nav-list li a {
-	text-decoration: none;
-	display: block;
-	padding: 10px;
-	border-bottom: 1px solid #515151 !important;
-	color: white;
-	margin-top: 5%;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-bottom: 1px solid #515151 !important;
+  color: white;
+  margin-top: 5%;
 }
 
-.nav-list > li > a {
-	color: white;
-	font-size: 14px;
-	padding-left: 13px !important;
-	border-bottom: 1px solid #585858;
+.nav-list>li>a {
+  color: white;
+  font-size: 14px;
+  padding-left: 13px !important;
+  border-bottom: 1px solid #585858;
 }
 
-.nav-list > li > a:hover {
-	background-color: #444444c7;
+.nav-list>li>a:hover {
+  background-color: #444444c7;
 }
 
-.nav-link{
+.nav-link {
   color: white;
 }
 
-h4{
+h4 {
   color: white;
 }
 
@@ -45,4 +45,3 @@ ul.ul-list {
   margin-left: -7%;
   cursor: pointer;
 }
-

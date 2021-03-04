@@ -8,3 +8,14 @@ export interface UserToken {
 // 	username: string;
 // 	identificationNumber: string;
  }
+
+
+ export class UserLogin {
+	constructor(
+		public userName: string = null,
+		public password: string = null,
+		public grantType: string = "password",
+		public token: string = null,
+		public clientId: string = null
+	) {}
+}

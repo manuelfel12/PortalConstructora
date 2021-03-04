@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: "login", component: LoginComponent },
 
     {
-        path: "",   component: LayoutComponent, canActivate: [LoginGuard],
+        path: "",   component: LayoutComponent,
         children: [
             {
                 path: "Constructoras",
@@ -19,7 +19,7 @@ const routes: Routes = [
                 loadChildren: () => import("./modules/constructor/constructor.module").then((m) => m.ConstructorModule)
             },
             {
-                path: "projects",
+                path: "Proyectos",
                 loadChildren: () => import("./modules/projects/projects.module").then((m) => m.ProjectsModule)
             },
             {

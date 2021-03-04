@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { UserLogin } from 'src/app/core/models/user.model';
+import { NgForm } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth.service';
 import { MsalService } from '@azure/msal-angular';
-import { UserService } from 'src/app/core/services/user/user.service';
 import jwt_decode from "jwt-decode";
-// import * as jwt_decode from 'jwt-decode';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,20 +13,24 @@ import jwt_decode from "jwt-decode";
 })
 export class LoginComponent implements OnInit {
 
+  public user: UserLogin;
   isLoggedIn: boolean = false;
   userData: any;
 
-  constructor(private userService: UserService, private authService: MsalService, private router: Router) { }
+  constructor(private authService: AuthService, private msalService: MsalService, private router: Router) {
+    this.user = new UserLogin();
+  }
 
   ngOnInit(): void {
   }
 
+  onSubmit(form: NgForm) {
 
-  onLogin() {
+
     if (this.isLoggedIn) {
-      this.authService.logout();
+      this.msalService.logout();
     } else {
-      this.authService
+      this.msalService
         .loginPopup()
         .then((result) => {
 
@@ -43,13 +48,25 @@ export class LoginComponent implements OnInit {
           console.log("Login failed : ", JSON.stringify(err));
         });
     }
+    // console.log('Credenciales de usuario', form.value);
+    // if (form.invalid) {
+    //   return;
+    // }
+    // let isValidCaptcha = true;
+    // /* 
+    //     ::::::::::::::::::::::: 
+    //     ::: Validar captcha ::: 
+    //     ::::::::::::::::::::::: 
+    // */
+    // if (!isValidCaptcha) { return; }
+    // this.login();
   }
 
   getTokenFromAPI(usuarioB2C: string, EstadoUsuario: string) {
     debugger;
     if (EstadoUsuario) {
 
-      this.userService.getTokenAPI(usuarioB2C).subscribe(response => {
+      this.authService.getTokenAPI(usuarioB2C).subscribe(response => {
 
         this.userData = response;
         if (this.userData.Data.key == "99") {
@@ -65,7 +82,7 @@ export class LoginComponent implements OnInit {
               // userToken.active_status = userToken.active_status ?? false;
               // localStorage.setItem("prw_user", JSON.stringify(userToken));
 
-              this.userService.setUserLoggedIn(this.userData.Data.value);
+              this.authService.setUserLoggedIn(this.userData.Data.value);
               this.validateRole(decoded['role']);
             }
           }
@@ -75,7 +92,6 @@ export class LoginComponent implements OnInit {
 
     }
   }
-
 
   validateRole(role: string) {
     switch (role) {
@@ -103,6 +119,16 @@ export class LoginComponent implements OnInit {
   }
 
 
-
+  login() {
+    this.authService.login(this.user).subscribe(
+			async (data) => {
+        // Procesar respuesta (data) y almacenar token en localStorage        
+			},
+			(error) => {
+				console.log("error", error);
+        // Procesar mensaje de error (SweetAlert2)
+			}
+		);
+  }
 
 }

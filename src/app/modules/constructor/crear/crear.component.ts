@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Stepper from 'bs-stepper';
 
 @Component({
   selector: 'app-crear',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrearComponent implements OnInit {
 
+  private stepper: Stepper;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.stepper = new Stepper(document.querySelector('#stepper1'), {
+      linear: false,
+      animation: true
+    })
   }
+
+
+  next() {
+    this.stepper.next();
+  }
+
+  previous() {
+    this.stepper.previous();
+  }
+
+  onSubmit() {
+    return false;
+  }
+
 
 }

@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { ConstructorComponent } from "./constructor.component";
 import { CrearComponent } from "./crear/crear.component";
+import { EditarComponent } from "./editar/editar.component";
 
 const routes: Routes = [
     { 
@@ -13,6 +14,11 @@ const routes: Routes = [
         path: "Crear", 
         // canLoad: [ConsultasIQGuard], //IMPLEMETAR Guards
         component: CrearComponent 
+    },
+    { 
+        path: "Editar", 
+        // canLoad: [ConsultasIQGuard], //IMPLEMETAR Guards
+        component: EditarComponent 
     }
 ];
 

@@ -1,18 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import Stepper from 'bs-stepper';
+import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-editar',
-  templateUrl: './editar.component.html',
-  styleUrls: ['./editar.component.css']
+  selector: 'app-contacto',
+  templateUrl: './contacto.component.html',
+  styleUrls: ['./contacto.component.css']
 })
-export class EditarComponent implements OnDestroy, OnInit {
+export class ContactoComponent implements OnInit {
 
   public dtOptions: DataTables.Settings = {};
-  private stepper: Stepper;
   persons: any[] = [];
 
   public dtTrigger: Subject<any> = new Subject<any>();
@@ -28,7 +26,6 @@ export class EditarComponent implements OnDestroy, OnInit {
       pageLength: 2
     };
     this.cargarDT();
-    this.cargarStepper();
 
 
   }
@@ -40,27 +37,8 @@ export class EditarComponent implements OnDestroy, OnInit {
     });
   }
 
-  cargarStepper(){
-    this.stepper = new Stepper(document.querySelector('#stepper1'), {
-      linear: false,
-      animation: true
-    })
-  }
-
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
-  }
-
-  next() {
-    this.stepper.next();
-  }
-
-  previous() {
-    this.stepper.previous();
-  }
-
-  onSubmit() {
-    return false;
   }
 
 }

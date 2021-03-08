@@ -1,0 +1,256 @@
+<div class="container-fluid container-main">
+
+
+
+
+  <div class="inner-container">
+
+    <div class="row">
+      <div class="form-group col-md-4">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AgregarContacto">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+            class="bi bi-file-plus-fill" viewBox="0 0 16 16">
+            <path
+              d="M12 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM8.5 6v1.5H10a.5.5 0 0 1 0 1H8.5V10a.5.5 0 0 1-1 0V8.5H6a.5.5 0 0 1 0-1h1.5V6a.5.5 0 0 1 1 0z" />
+          </svg>
+          Agregar contacto
+        </button>
+      </div>
+    </div>
+
+    <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered row-border hover">
+      <thead>
+        <tr>
+          <th>NOMBRE CONTACTO</th>
+          <th>NÚMERO CONTACTO</th>
+          <th>EDITAR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of persons">
+          <td>{{ person.Nombre }}</td>
+          <td>{{ person.idRegion }}</td>
+          <td>
+            <button class="btn btn-link btn-cursor" data-toggle="modal" data-target="#EditarContacto">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path
+                  d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                <path fill-rule="evenodd"
+                  d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+              </svg>
+            </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<!-- AgregarContacto -->
+<div class="modal fade" id="AgregarContacto" tabindex="-1" aria-labelledby="AgregarContactoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar contacto</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>NOMBRE CONSTRUCTORA *</label>
+                <input type="text" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label>PROYECTO *</label>
+                <input type="text" placeholder="Ingrese nombre proyecto" class="form-control" />
+              </div>
+
+              <div class="form-group">
+                <label>REGIÓN *</label>
+                <select class="form-control">
+                  <option disabled selected> Seleccionar una opción </option>
+                </select>
+              </div>
+
+
+              <div class="form-group">
+                <label>NOMBRE CONTACTO *</label>
+                <input type="text" class="form-control" placeholder="Campo alfanúmerico" maxlength="51" />
+
+              </div>
+
+              <div class="form-group">
+                <label>E-MAIL *</label>
+                <input type="text" placeholder="Ingrese correo electrónico válido" class="form-control"
+                  maxlength="51" />
+
+              </div>
+
+
+            </div>
+
+            <div class="col-md-6">
+
+              <div class="form-group">
+                <label>TIPO DE CONTACTO *</label>
+                <select class="form-control">
+                  <option disabled selected> Seleccionar una opción </option>
+
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>DIRECCIÓN *</label>
+                <input type="text" placeholder="Campo alfanúmerico" class="form-control" maxlength="51" />
+
+              </div>
+
+              <div class="form-group">
+                <label>TELÉFONO FIJO *</label>
+                <input type="text" placeholder="Ingresar solo números" maxlength="8" class="form-control" />
+
+              </div>
+
+              <div class="form-group">
+                <label>CELULAR *</label>
+                <input type="text" placeholder="Ingresar solo números" class="form-control" maxlength="11" />
+
+              </div>
+
+
+
+            </div>
+
+
+
+
+          </div>
+        </div>
+
+
+
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Registrar</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- EditarContacto -->
+<div class="modal fade" id="EditarContacto" tabindex="-1" aria-labelledby="EditarContactoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-responsive" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Editar contacto</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label>NOMBRE CONSTRUCTORA *</label>
+              <input type="text" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label>PROYECTO *</label>
+              <input type="text" placeholder="Ingrese nombre proyecto" class="form-control" />
+            </div>
+
+            <div class="form-group">
+              <label>REGIÓN *</label>
+              <select class="form-control">
+                <option disabled selected> Seleccionar una opción </option>
+              </select>
+            </div>
+
+
+            <div class="form-group">
+              <label>NOMBRE CONTACTO *</label>
+              <input type="text" class="form-control" placeholder="Campo alfanúmerico" maxlength="51" />
+
+            </div>
+
+            <div class="form-group">
+              <label>E-MAIL *</label>
+              <input type="text" placeholder="Ingrese correo electrónico válido" class="form-control"
+                maxlength="51" />
+
+            </div>
+
+
+          </div>
+
+          <div class="col-md-6">
+
+            <div class="form-group">
+              <label>TIPO DE CONTACTO *</label>
+              <select class="form-control">
+                <option disabled selected> Seleccionar una opción </option>
+
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>DIRECCIÓN *</label>
+              <input type="text" placeholder="Campo alfanúmerico" class="form-control" maxlength="51" />
+
+            </div>
+
+            <div class="form-group">
+              <label>TELÉFONO FIJO *</label>
+              <input type="text" placeholder="Ingresar solo números" maxlength="8" class="form-control" />
+
+            </div>
+
+            <div class="form-group">
+              <label>CELULAR *</label>
+              <input type="text" placeholder="Ingresar solo números" class="form-control" maxlength="11" />
+
+            </div>
+
+
+
+          </div>
+
+
+
+
+        </div>
+      </div>
+
+
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-primary">Registrar</button>
+
+
+    </div>
+  </div>
+</div>
+</div>

@@ -251,17 +251,9 @@ html {
   }
 
   .logoEntidad{
-    margin-top: 30%;
+    margin-top: 25%;
   }
 
-  .bg-Login {
-    background-image: url(../../../../assets/img/logoEntidad.png);
-    background-size: 86%;
-    background-repeat: no-repeat;
-    background-position-y: bottom;
-}
-  
-  
   
   /* OTHERS */
   

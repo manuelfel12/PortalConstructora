@@ -5,11 +5,13 @@ import { CrearComponent } from './crear/crear.component';
 import { DataTablesModule } from "angular-datatables";
 import { CommonModule } from "@angular/common";
 import { EditarComponent } from './editar/editar.component';
+import { ContactoComponent } from './contacto/contacto.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
-    declarations: [ConstructorComponent, CrearComponent, EditarComponent],
+    declarations: [ConstructorComponent, CrearComponent, EditarComponent, ContactoComponent],
     imports: [
-        ConstructorRoutingModule, DataTablesModule, CommonModule
+        ConstructorRoutingModule, DataTablesModule, CommonModule, FormsModule, ReactiveFormsModule
     ]
 })
 

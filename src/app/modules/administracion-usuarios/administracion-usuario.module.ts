@@ -5,10 +5,12 @@ import { ConsultarComponent } from './consultar/consultar.component';
 import { EditarComponent } from './editar/editar.component';
 import { DeshabilitarComponent } from './deshabilitar/deshabilitar.component';
 import { CrearComponent } from "./crear/crear.component";
+import { DataTablesModule } from "angular-datatables";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     declarations: [AdministracionUsuariosComponent, CrearComponent, ConsultarComponent, EditarComponent, DeshabilitarComponent],
-    imports: [ AdministracionUsuarioRoutingModule],
+    imports: [ AdministracionUsuarioRoutingModule, DataTablesModule, CommonModule ],
     // providers: [ ConsultasIQGuard ],
 })
 

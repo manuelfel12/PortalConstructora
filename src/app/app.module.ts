@@ -12,11 +12,14 @@ import { ConsultasIQGuard } from './core/guards/consultas-iq.guard';
 import { FormsModule } from '@angular/forms';
 import { MsalModule } from '@azure/msal-angular';
 import { DataTablesModule } from 'angular-datatables';
+import { SearchByProjectsComponent } from './modules/search-by-projects/search-by-projects.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SearchByProjectsComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +28,7 @@ import { DataTablesModule } from 'angular-datatables';
     LayoutModule,
     AppRoutingModule,
     FormsModule,
+    NgMultiSelectDropDownModule.forRoot(),
     MsalModule.forRoot({
       auth: {
         // clientId: "cb0ddcd3-1cd3-4cf2-b4bf-334b61621b67",

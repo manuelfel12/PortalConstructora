@@ -4,6 +4,7 @@ import { ConsultasIQGuard } from "./core/guards/consultas-iq.guard";
 import { LoginGuard } from "./core/guards/login.guard";
 import { LayoutComponent } from "./layout/layout.component";
 import { LoginComponent } from "./modules/authentication/login/login.component";
+import { SearchByProjectsComponent } from "./modules/search-by-projects/search-by-projects.component";
 
 
 const routes: Routes = [
@@ -27,6 +28,9 @@ const routes: Routes = [
                 // canLoad: [ConsultasIQGuard],
                 canActivateChild: [ConsultasIQGuard],
                 loadChildren: () => import("./modules/administracion-usuarios/administracion-usuario.module").then((m) => m.AdministracionUsuarioModule)
+            },
+            {
+                path: "BusquedaProyecto", component: SearchByProjectsComponent
             }
         ]
     },

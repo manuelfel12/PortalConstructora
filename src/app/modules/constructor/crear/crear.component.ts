@@ -13,11 +13,11 @@ import Stepper from 'bs-stepper';
 export class CrearComponent implements OnInit {
 
   private stepper: Stepper;
-  objForm: FormGroup;
-  objCreateConstructor: FormGroup;
-  submitted = false;
-  ListaRegiones: {};
-  ListaTipoContacto: {};
+  public objForm: FormGroup;
+  public objCreateConstructor: FormGroup;
+  public submitted = false;
+  public ListaRegiones: String[];
+  public ListaTipoContacto: [];
 
   constructor(private formBuilder: FormBuilder, private loader: LoaderService, private servicioProyecto :ProyectoService, private servicioContacto :ContactoService) {
     this.createForm();
@@ -60,19 +60,18 @@ export class CrearComponent implements OnInit {
 
   loadLists() {
     this.loader.display(true);
-    this.servicioProyecto.getAllRegion().subscribe(data => {
-      this.ListaRegiones = data;
-      console.log("Regiones: " + this.ListaTipoContacto)
-      this.loader.display(false);
-    });
+    this.servicioProyecto.getAllRegion().subscribe(responseregion => {
+      this.ListaRegiones = Object.assign(responseregion['Data']) ;
+      console.log(this.ListaRegiones)  
+    }, error => console.log(error));
 
     
 
-    this.servicioContacto.getAllTypeContacts().subscribe(data => {
-      this.ListaTipoContacto = data;
-      console.log("Contacto " + this.ListaTipoContacto)
-      this.loader.display(false);
-    });
+    this.servicioContacto.getAllTypeContacts().subscribe(responsecontacto => {
+      this.ListaTipoContacto = Object.assign(responsecontacto['Data']);
+      console.log(this.ListaTipoContacto)
+      
+    },error => console.log(error));
 
 
   }

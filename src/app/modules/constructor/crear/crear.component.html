@@ -151,10 +151,9 @@
               <div class="form-group">
                 <label>TIPO DE CONTACTO *</label>
                 <select id="cmbTipoContacto" class="form-control">
-                  <option value="" disabled selected> Seleccionar una opción</option>
-                  <option value="NIT">Tramitador</option>
-                  <option value="RUT">Abogado</option>
-                  <option value="FIDEICOMISO">Perito</option>
+                  <option value="" disabled selected> Seleccionar una opción </option>
+                  <option *ngFor="let item of ListaTipoContacto" [ngValue]="item">
+                      {{item.Nombre}}
                 </select>
               </div>
   

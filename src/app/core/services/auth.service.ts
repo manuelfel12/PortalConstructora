@@ -8,7 +8,7 @@ import { UserLogin, UserToken } from '../models/user.model';
 })
 export class AuthService {
 
-  constructor(private _http: HttpClient) {     
+  constructor(private _http: HttpClient) {
   }
 
   login(userLogin: UserLogin) {
@@ -19,7 +19,7 @@ export class AuthService {
     return this._http.post(`${environment.urlApi}User/getAuthorize`, UserName);
   }
 
-  getFuncionalidadesPorRol(){
+  getFuncionalidadesPorRol() {
     return this._http.get(`${environment.urlApi}User/getFuncionalidadesPorRol`);
   }
 
@@ -30,6 +30,10 @@ export class AuthService {
 
   getUserToken(): UserToken {
     return localStorage.userToken;
+  }
+
+  getUserNameLoggedIn() {
+    return this._http.get(`${environment.urlApi}User/postGetUser`);
   }
 
 }

@@ -14,12 +14,16 @@ import { MsalModule } from '@azure/msal-angular';
 import { DataTablesModule } from 'angular-datatables';
 import { SearchByProjectsComponent } from './modules/search-by-projects/search-by-projects.component';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { SearchByDocumentComponent } from './modules/search-by-document/search-by-document.component';
+import { BulkLoadComponent } from './modules/bulk-load/bulk-load.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SearchByProjectsComponent
+    SearchByProjectsComponent,
+    SearchByDocumentComponent,
+    BulkLoadComponent
   ],
   imports: [
     BrowserModule,

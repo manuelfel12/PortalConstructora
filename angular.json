@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "portal-app"
+  "defaultProject": "portal-app",
+  "cli": {
+    "analytics": "7f9d4536-654f-4fb1-ad63-427d8f9d39de"
+  }
 }

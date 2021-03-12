@@ -28,7 +28,7 @@ const routes: Routes = [
             {
                 path: "AdministracionUsuario",
                 // canLoad: [ConsultasIQGuard],
-                canActivateChild: [ConsultasIQGuard],
+                //canActivateChild: [ConsultasIQGuard],
                 loadChildren: () => import("./modules/administracion-usuarios/administracion-usuario.module").then((m) => m.AdministracionUsuarioModule)
             },
             {

@@ -1,1 +1,217 @@
-<p>crear works!</p>
+<div id="stepper1" class="bs-stepper">
+    <div class="bs-stepper-header">
+      <div class="step" data-target="#test-l-1">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">1</span>
+          <span class="bs-stepper-label">INFORMACIÓN CONSTRUCTORA</span>
+        </button>
+      </div>
+      
+      <div class="line"></div>
+      <div class="step" data-target="#test-l-2">
+        <button class="step-trigger">
+          <span class="bs-stepper-circle">2</span>
+          <span class="bs-stepper-label">INFORMACIÓN CONTACTO</span>
+        </button>
+      </div>
+    </div>
+    <div class="bs-stepper-content">
+  
+      <div id="test-l-1" class="content">
+  
+        <form  autocomplete="off"  [formGroup]="objCreateConstructor" oncopy="return false;" oncut="return false;" onpaste="return false;" autocomplete="off" >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>NOMBRE CONSTRUCTORA *</label>
+                <input class="form-control" type="text" formControlName="txtNombreConstructora" placeholder="Campo alfanumérico" maxlength="71" />
+                <p *ngIf="objCreateConstructor.controls['txtNombreConstructora'].value == '' && (objCreateConstructor.controls['txtNombreConstructora'].dirty || objCreateConstructor.controls['txtNombreConstructora'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtNombreConstructora').hasError('minlength')" class="color-text-validator">
+                    El mínimo de caracteres permitidos es 5.</p>
+                <p *ngIf="objCreateConstructor.get('txtNombreConstructora').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 70.
+                </p>
+              </div>
+              <div class="form-group">
+                <label>INSTRUMENTADOR *</label>
+                <input class="form-control" type="text" formControlName="txtInstrumentador" placeholder="Campo alfanumérico" maxlength="50" />
+                <p *ngIf="objCreateConstructor.controls['txtInstrumentador'].value == '' && (objCreateConstructor.controls['txtInstrumentador'].dirty || objCreateConstructor.controls['txtInstrumentador'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtInstrumentador').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 50.
+                </p>
+              </div>
+
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>TIPO DOCUMENTO IDENTIFICACIÓN *</label>
+                <select class="form-control" formControlName="cmbTipoDocumento" (change)="showInput()" >
+                  <option value="" disabled selected> Seleccionar una opción</option>
+                  <option value="NIT">NIT</option>
+                  <option value="RUT">RUT</option>
+                  <option value="FIDEICOMISO">FIDEICOMISO</option>
+                </select>
+              </div>
+
+              <div id="inputNit" style="display: none" class="form-group">
+                <label>NIT *</label>
+                <input type="text" class="form-control" formControlName="txtNit" (keypress)="validarNumeros($event)" placeholder="Campo alfanumérico" maxlength="10" />
+                <p *ngIf="objCreateConstructor.controls['txtNit'].value == '' && (objCreateConstructor.controls['txtNit'].dirty || objCreateConstructor.controls['txtNit'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtNit').hasError('minlength')" class="color-text-validator">
+                    El mínimo de caracteres permitidos es 10.
+                </p>
+                <p *ngIf="objCreateConstructor.get('txtNit').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 10.
+                </p>
+            </div>
+
+            <div id="inputRut" style="display: none" class="form-group">
+                <label>RUT *</label>
+                <input type="text" class="form-control" formControlName="txtRut" (keypress)="validarNumeros($event)" placeholder="Campo alfanumérico" maxlength="10" />
+
+                <p *ngIf="objCreateConstructor.controls['txtRut'].value == '' && (objCreateConstructor.controls['txtRut'].dirty || objCreateConstructor.controls['txtRut'].touched)" class="color-text-validator">Campo requerido</p> 
+                <p *ngIf="objCreateConstructor.get('txtRut').hasError('minlength')" class="color-text-validator">
+                    El mínimo de caracteres permitidos es 5 y máximo de caracteres permitidos es 10.
+                </p>
+                <p *ngIf="objCreateConstructor.get('txtRut').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 10.
+                </p>
+            </div>
+
+            <div id="inputFideicomiso" style="display: none" class="form-group">
+                <label>FIDEICOMISO *</label>
+                <input type="text" class="form-control" formControlName="txtFideicomiso" (keypress)="validarNumeros($event)" placeholder="Campo alfanumérico" maxlength="11" />
+
+                <p *ngIf="objCreateConstructor.controls['txtFideicomiso'].value == '' && (objCreateConstructor.controls['txtFideicomiso'].dirty || objCreateConstructor.controls['txtFideicomiso'].touched)" class="color-text-validator">Campo requerido</p> 
+
+                <p *ngIf="objCreateConstructor.get('txtFideicomiso').hasError('minlength')" class="color-text-validator">
+                    El mínimo de caracteres permitidos es 11.
+                </p>
+                <p *ngIf="objCreateConstructor.get('txtFideicomiso').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 11.
+                </p>
+            </div>
+
+            <div *ngIf="submitted">
+                <p class="color-text-validator">Campo requerido</p>
+            </div>
+
+            <div class="espaciador"></div>
+            </div>
+          </div>
+        </form>
+  
+      </div>
+
+      <div id="test-l-2" class="content">
+  
+        <form [formGroup]="objCreateConstructor" (ngSubmit)="createConstructionCompany()" >
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>NOMBRE CONTACTO *</label>
+                <input id="txtNombreContacto" type="text" class="form-control" placeholder="Campo alfanúmerico" formControlName="txtNombreContacto" maxlength="51" autocomplete="off" />
+                <p *ngIf="objCreateConstructor.controls['txtNombreContacto'].value == '' && (objCreateConstructor.controls['txtNombreContacto'].dirty || objCreateConstructor.controls['txtNombreContacto'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtNombreContacto').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 50.
+                </p>
+              </div>
+  
+              <div class="form-group">
+                <label>REGIÓN *</label>
+                <select id="cmbRegion" class="form-control" formControlName="cmbRegion">
+                  <option value="" disabled selected> Seleccionar una opción </option>
+                  <option *ngFor="let item of ListaRegiones" [ngValue]="item">
+                      {{item.Nombre}}
+                  </option>
+              </select>
+              </div>
+  
+              <div class="form-group">
+                <label>E-MAIL *</label>
+                <input id="txtEmail" type="text" class="form-control" placeholder="Ingrese correo electrónico válido" formControlName="txtEmail" maxlength="51" autocomplete="off" />
+                <p *ngIf="objCreateConstructor.controls['txtEmail'].value == '' && (objCreateConstructor.controls['txtEmail'].dirty || objCreateConstructor.controls['txtEmail'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtEmail').errors?.pattern" class="color-text-validator">
+                    Por favor ingrese su dirección de correo electrónico válida
+                </p>
+              </div>
+  
+              <div class="form-group">
+                <label>DIRECCIÓN *</label>
+                <input id="txtDireccion" type="text" class="form-control" placeholder="Campo alfanúmerico" formControlName="txtDireccion" maxlength="51" autocomplete="off" />
+               <p *ngIf="objCreateConstructor.controls['txtDireccion'].value == '' && (objCreateConstructor.controls['txtDireccion'].dirty || objCreateConstructor.controls['txtDireccion'].touched)" class="color-text-validator">Campo requerido</p>
+
+                <p *ngIf="objCreateConstructor.get('txtDireccion').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 50.
+                </p>
+              </div>
+            </div>
+  
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>TIPO DE CONTACTO *</label>
+                <select id="cmbTipoContacto" class="form-control">
+                  <option value="" disabled selected> Seleccionar una opción </option>
+                  <option *ngFor="let item of ListaTipoContacto" [ngValue]="item">
+                      {{item.Nombre}}
+                </select>
+              </div>
+  
+              <div class="form-group">
+                <label>TELÉFONO FIJO *</label>
+                <input id="txtTelefonoFijo" type="text" class="form-control" (keypress)="validarNumeros($event)" placeholder="Ingresar solo números" formControlName="txtTelefonoFijo" maxlength="8" autocomplete="off" />
+                <p *ngIf="objCreateConstructor.controls['txtTelefonoFijo'].value == '' && (objCreateConstructor.controls['txtTelefonoFijo'].dirty || objCreateConstructor.controls['txtTelefonoFijo'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtTelefonoFijo').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 7.
+                </p>
+                <p *ngIf="objCreateConstructor.get('txtTelefonoFijo').hasError('minlength')" class="color-text-validator">
+                    El mínimo de caracteres permitidos es 7.
+                </p>
+              </div>
+  
+              <div class="form-group">
+                <label>CELULAR *</label>
+                <input id="txtCelular" type="text" class="form-control" (keypress)="validarNumeros($event)" placeholder="Ingresar solo números" formControlName="txtCelular" maxlength="11" autocomplete="off" />
+                <p *ngIf="objCreateConstructor.controls['txtCelular'].value == '' && (objCreateConstructor.controls['txtCelular'].dirty || objCreateConstructor.controls['txtCelular'].touched)" class="color-text-validator">Campo requerido</p>
+                <p *ngIf="objCreateConstructor.get('txtCelular').hasError('maxlength')" class="color-text-validator">
+                    El máximo de caracteres permitidos es 10.
+                </p>
+                <p *ngIf="objCreateConstructor.get('txtCelular').hasError('minlength')" class="color-text-validator">
+                    El mínimo de caracteres permitidos es 10.
+                </p>
+              </div>
+  
+  
+              <div class="form-group">
+              <button type="submit" class="btn btn-primary col-md-6 btn-register"   >
+  
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-check-circle-fill" viewBox="0 0 16 16">
+                  <path
+                    d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                </svg>
+  
+                Registrar
+  
+              </button>
+            </div>
+  
+
+            </div>
+          </div>
+        </form>
+  
+      </div>
+  
+      <div class="input-group input-group-location">
+        <hr>
+        <div class="input-group-append" id="button-addon4">
+          <button (click)="previous()" class="btn btn-outline-secondary">Previous</button>
+          <button (click)="next()" class="btn btn-outline-secondary">Next</button>
+        </div>
+      </div>
+  
+  
+  
+    </div>
+  </div>

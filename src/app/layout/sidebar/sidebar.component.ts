@@ -21,7 +21,6 @@ export class SidebarComponent implements OnInit {
   getMenu() {
     this.authService.getFuncionalidadesPorRol().subscribe(response => {
       this.MenuItem = Object.assign(response['Data']);
-      console.log(this.MenuItem);
     });
   }
 
